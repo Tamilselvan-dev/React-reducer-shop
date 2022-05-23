@@ -1,14 +1,22 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { ProudctData } from './shop/ShopData';
+import { ProudctData, AccessoriesData } from './shop/ShopData';
 import ProductCard from './ProductCard';
+import './style.css'
 
 const Product = () => {
   return (
     <div>
-      <Title>Welcome to TS Clothing Shop</Title>
+      <Title>Trending</Title>
       <ProductsWrapper>
         {ProudctData.map((value, index) => (
+          <ProductCard key={index} {...value} />
+        ))}
+      </ProductsWrapper>
+
+      <Title>Accessories</Title>
+      <ProductsWrapper>
+        {AccessoriesData.map((value, index) => (
           <ProductCard key={index} {...value} />
         ))}
       </ProductsWrapper>
@@ -17,16 +25,21 @@ const Product = () => {
 };
 
 const Title = styled.h1`
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 30px;
+  margin: 20px;
+  text-align: center;
 `;
 
 const ProductsWrapper = styled.div`
-  width: fit-content;
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 20px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
 `;
 
 export default Product

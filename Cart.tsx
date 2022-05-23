@@ -4,7 +4,10 @@ import styled from 'styled-components'
 const Cart = () => {
 
   return (
-     <Title>Your cart total is 100.00$</Title>
+      <div>
+      <Title>Your cart total is 100.00$</Title>
+      </div>
+     
   )
 }
 
