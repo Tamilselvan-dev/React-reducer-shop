@@ -2,13 +2,14 @@ import * as React from 'react';
 import './style.css';
 import { BrowserRouter, Routes, Route , Link} from 'react-router-dom';
 import styled from "styled-components";
-import Product from './Products'
-import Cart from './Cart'
-
+import { ProductContext } from './shop/ShopContext';
+import Product from './Products';
+import Cart from './Cart';
 
 
 export default function App() {
   return (
+    <ProductContext>
         <Wrapper>
         <TitleWrapper>
           <h1>----------<H>Online</H><H1> Shop</H1>----------</h1>
@@ -24,6 +25,7 @@ export default function App() {
       </Routes>      
         </BrowserRouter>
         </Wrapper>
+    </ProductContext>
   );
 };
 

@@ -1,26 +1,47 @@
 import * as React from 'react';
-import styled from 'styled-components'
-import { useState, useEffect} from 'react'
-import './style.css'
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import useShop from './shop/ShopContext';
+import './style.css';
 
-const ProductCard = ({ name, price, imageUrl}) => {
-
+const ProductCard = ({ name, price, imageUrl }) => {
+  const { products, addToCart, removeFromCart } = useShop();
   const [isInCart, setIsInCart] = useState(false);
- 
+
+  useEffect(() => {
+    const productIsInCart = products.find((product) => product.name === name);
+
+    if (productIsInCart) {
+      setIsInCart(true);
+    } else {
+      setIsInCart(false);
+    }
+  }, [products, name]);
+
+  const handleClick = () => {
+    const product = { name, price, imageUrl };
+
+    if (isInCart) {
+      removeFromCart(product);
+    } else {
+      addToCart(product);
+    }
+  };
+
   return (
     <Wrapper background={imageUrl}>
-      <AddButton>
-        <p>-</p>
+      <AddButton onClick={handleClick} isInCart={isInCart}>
+        <p>{isInCart ? '-' : '+'}</p>
       </AddButton>
       <TextContainer>
         <Title>{name}</Title>
         <Subtitle>{price}.00$</Subtitle>
       </TextContainer>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;
 
 const Wrapper = styled.div`
   display: grid;
@@ -35,6 +56,7 @@ const Wrapper = styled.div`
   background-size: 300px;
   overflow: hidden;
   position: relative;
+  transition: 300ms all;
 `;
 
 const AddButton = styled.div`
@@ -46,10 +68,11 @@ const AddButton = styled.div`
   right: 20px;
   width: 20px;
   height: 20px;
-  background: ${(props) => (props.isInCart ? "#E55336" : "#60c95d")};
+  background: ${(props) => (props.isInCart ? '#E55336' : '#60c95d')};
   border-radius: 50%;
   padding: 5px;
   cursor: pointer;
+  transition: 300ms all;
 
   :hover {
     transform: scale(1.2);
