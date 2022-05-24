@@ -6,7 +6,7 @@ export const ProudctData = [
       'https://images.unsplash.com/photo-1528812969535-4bcefc071532?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGRyZXNzZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=600',
   },
   {
-    name: 'Rose Long Sky',
+    name: 'R Long Sky',
     price: 900,
     imageUrl:
       'https://images.unsplash.com/photo-1622122201640-3b34a4a49444?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGRyZXNzZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=600',

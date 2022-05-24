@@ -31,13 +31,7 @@ const ProductCard = ({ name, price, imageUrl }) => {
   return (
     <Wrapper background={imageUrl}>
       <AddButton onClick={handleClick} isInCart={isInCart}>
-        <img
-          src={
-            isInCart
-              ? 'https://cdn-icons.flaticon.com/png/512/4715/premium/4715132.png?token=exp=1653378414~hmac=676e9202c1cb1368b45daed4729826fe'
-              : 'https://cdn-icons-png.flaticon.com/512/891/891407.png'
-          }
-        />
+        <p>{isInCart ? '-' : '+' }</p>
       </AddButton>
       <TextContainer>
         <Title>{name}</Title>
@@ -74,35 +68,21 @@ const AddButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
+  bottom: 90px;
   right: 20px;
   width: 20px;
   height: 20px;
-  background: ${(props) => (props.isInCart ? '#F4F4F8' : '#F4F4F8')};
+  background: ${(props) => (props.isInCart ? '#750D37' : '#21FA90')};
   border-radius: 50%;
-  padding: 15px;
+  z-index: 1;
+  padding: 5px;
   cursor: pointer;
   transition: 300ms all ease;
 
-  img {
-    width: 30px;
-
-    :hover {
-      animation: shake 2s ease-in-out infinite;
-      transition: 300ms all ease;
-
-      @keyframes shake {
-        0% {        
-          transform: translatey(0px);
-        }
-        50% {
-           transform: translatey(-10px);
-        }
-        100% {
-          transform: translatey(0px);
-        }
-      }
-    }
+  p {
+      font-size: 30px;
+      font-weight: bold;
+      color: white;
   }
 `;
 
