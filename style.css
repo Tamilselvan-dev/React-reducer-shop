@@ -28,7 +28,8 @@ a {
 }
 
 .TopLink img {
-  height: 30px;
+  height: 25px;
+  margin-right: 10px;;
 }
 
 .TopLink .home {

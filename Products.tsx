@@ -39,7 +39,6 @@ const ProductsWrapper = styled.div`
   gap: 40px;
   flex-wrap: wrap;
   justify-content: space-evenly;
-
 `;
 
 export default Product

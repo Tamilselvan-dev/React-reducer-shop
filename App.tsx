@@ -12,7 +12,7 @@ export default function App() {
     <ProductContext>
         <Wrapper>
         <TitleWrapper>
-          <h1>----------<H>Online</H><H1> Shop</H1>----------</h1>
+          <h1><H>Online</H><H1> Shop</H1></h1>
         </TitleWrapper>
         <BrowserRouter>
         <LinkWrapper>
@@ -49,7 +49,7 @@ const LinkWrapper = styled.div`
 font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: space-evenly;
-  padding: 10px;
+  padding: 8px;
   box-shadow: 10px 10px 73px 0px rgba(0,0,0,0.30);
     margin: 20px;
     border-radius: 30px;

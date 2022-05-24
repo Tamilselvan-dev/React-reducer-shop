@@ -5,6 +5,7 @@ import useShop from './shop/ShopContext';
 import './style.css';
 
 const ProductCard = ({ name, price, imageUrl }) => {
+  
   const { products, addToCart, removeFromCart } = useShop();
   const [isInCart, setIsInCart] = useState(false);
 
@@ -16,6 +17,7 @@ const ProductCard = ({ name, price, imageUrl }) => {
     } else {
       setIsInCart(false);
     }
+
   }, [products, name]);
 
   const handleClick = () => {
@@ -56,7 +58,11 @@ const Wrapper = styled.div`
   background-size: 300px;
   overflow: hidden;
   position: relative;
-  transition: 300ms all;
+  transition: 300ms all ease;
+
+  :hover {
+    box-shadow: none;
+  }
 `;
 
 const AddButton = styled.div`
@@ -64,7 +70,8 @@ const AddButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
+  z-index:1;
+  bottom: 50px;
   right: 20px;
   width: 20px;
   height: 20px;
@@ -76,7 +83,7 @@ const AddButton = styled.div`
 
   :hover {
     transform: scale(1.2);
-    transition: 1s;
+    transition: all 300ms ease;
   }
 
   p {
