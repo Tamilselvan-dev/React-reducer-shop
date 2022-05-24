@@ -5,7 +5,6 @@ import useShop from './shop/ShopContext';
 import './style.css';
 
 const ProductCard = ({ name, price, imageUrl }) => {
-  
   const { products, addToCart, removeFromCart } = useShop();
   const [isInCart, setIsInCart] = useState(false);
 
@@ -17,7 +16,6 @@ const ProductCard = ({ name, price, imageUrl }) => {
     } else {
       setIsInCart(false);
     }
-
   }, [products, name]);
 
   const handleClick = () => {
@@ -33,7 +31,13 @@ const ProductCard = ({ name, price, imageUrl }) => {
   return (
     <Wrapper background={imageUrl}>
       <AddButton onClick={handleClick} isInCart={isInCart}>
-        <p>{isInCart ? '-' : '+'}</p>
+        <img
+          src={
+            isInCart
+              ? 'https://cdn-icons.flaticon.com/png/512/4715/premium/4715132.png?token=exp=1653378414~hmac=676e9202c1cb1368b45daed4729826fe'
+              : 'https://cdn-icons-png.flaticon.com/512/891/891407.png'
+          }
+        />
       </AddButton>
       <TextContainer>
         <Title>{name}</Title>
@@ -58,7 +62,7 @@ const Wrapper = styled.div`
   background-size: 300px;
   overflow: hidden;
   position: relative;
-  transition: 300ms all ease;
+  transition: 300ms all;
 
   :hover {
     box-shadow: none;
@@ -70,26 +74,35 @@ const AddButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index:1;
-  bottom: 50px;
+  top: 20px;
   right: 20px;
   width: 20px;
   height: 20px;
-  background: ${(props) => (props.isInCart ? '#E55336' : '#60c95d')};
+  background: ${(props) => (props.isInCart ? '#F4F4F8' : '#F4F4F8')};
   border-radius: 50%;
-  padding: 5px;
+  padding: 15px;
   cursor: pointer;
-  transition: 300ms all;
+  transition: 300ms all ease;
 
-  :hover {
-    transform: scale(1.2);
-    transition: all 300ms ease;
-  }
+  img {
+    width: 30px;
 
-  p {
-    font-size: 20px;
-    margin: 0;
-    color: white;
+    :hover {
+      animation: shake 2s ease-in-out infinite;
+      transition: 300ms all ease;
+
+      @keyframes shake {
+        0% {        
+          transform: translatey(0px);
+        }
+        50% {
+           transform: translatey(-10px);
+        }
+        100% {
+          transform: translatey(0px);
+        }
+      }
+    }
   }
 `;
 
